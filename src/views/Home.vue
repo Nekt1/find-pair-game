@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <section class="memory-game">
+    <Item
+      v-for="product in memoryCards"
+      :key="product.id"
+      :product="product"
+      @card-has-flipped="cardFlipped"
+      :hasFlippedCard="hasFlippedCard"
+      :firstCard="firstCard"
+      @update-first-card="updateFirstCard"
+      :secondCard="secondCard"
+      @update-second-card="updateSecondCard"
+    />
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Item from '@/components/Item.vue'
 
 export default {
-  name: 'Home',
+  data () {
+    return {
+      hasFlippedCard: false,
+      firstCard: null,
+      secondCard: null
+    }
+  },
+  props: ['memoryCards'],
   components: {
-    HelloWorld
+    Item
+  },
+  methods: {
+    cardFlipped () {
+      this.hasFlippedCard = !this.hasFlippedCard
+    },
+    updateFirstCard (card) {
+      this.firstCard = card
+    },
+    updateSecondCard (card) {
+      this.secondCard = card
+    }
   }
 }
 </script>
