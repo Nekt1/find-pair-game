@@ -7,14 +7,4 @@
 </template>
 
 <script>
-import cards from '@/cards.json'
-
-export default {
-  data () {
-    return {
-      memoryCards: cards,
-      isActive: false
-    }
-  }
-}
 </script>

@@ -1,15 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import cards from '@/cards.json'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    props: {
-      memoryCards: cards
-    }
+    component: Home
   },
   {
     path: '/about',
